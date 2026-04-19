@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fathima Shafeeka — UI/UX Designer & Software Engineer</title>
+  <meta name="description" content="Fathima Shafeeka — UI/UX Designer and Software Engineering student from Sri Lanka. Seeking remote internships globally. Specialist in Figma, interaction design, and full-stack development.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080b10;
+      --bg2: #0d1117;
+      --surface: #111620;
+      --surface2: #161c2a;
+      --border: rgba(255,255,255,0.07);
+      --coral: #ff5e57;
+      --sky: #38bdf8;
+      --lime: #a3e635;
+      --amber: #fbbf24;
+      --text: #e8eaf0;
+      --muted: #8892a4;
+      --bright: #ffffff;
+      --r: 14px;
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      background: rgba(8,11,16,0.75);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--bright);
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--coral); }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--bright); }
+    .nav-cta {
+      background: var(--coral);
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      font-size: 13px !important;
+      transition: opacity .2s, transform .2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: 0;
+      align-items: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute;
+      top: -200px; right: -100px;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,94,87,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-glow2 {
+      position: absolute;
+      bottom: -100px; left: 100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-left { position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,94,87,0.1);
+      border: 1px solid rgba(255,94,87,0.25);
+      color: var(--coral);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 28px;
+      animation: fadeInDown 0.6s ease;
+    }
+    .hero-badge::before { content: '●'; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(42px, 5vw, 72px);
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--bright);
+      letter-spacing: -2px;
+      animation: fadeInUp 0.7s ease;
+    }
+    .hero h1 .name-coral { color: var(--coral); }
+    .hero-sub {
+      margin-top: 20px;
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 52ch;
+      line-height: 1.7;
+      font-weight: 300;
+      animation: fadeInUp 0.8s ease;
+    }
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+      animation: fadeInUp 0.9s ease;
+    }
+    .chip {
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .chip-coral { border-color: rgba(255,94,87,0.3); color: var(--coral); background: rgba(255,94,87,0.08); }
+    .chip-sky { border-color: rgba(56,189,248,0.3); color: var(--sky); background: rgba(56,189,248,0.08); }
+    .chip-lime { border-color: rgba(163,230,53,0.3); color: var(--lime); background: rgba(163,230,53,0.08); }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease;
+    }
+    .btn-primary {
+      background: var(--coral);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all .25s;
+    }
+    .btn-primary:hover { background: #e04840; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,94,87,0.3); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      padding: 14px 28px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all .25s;
+    }
+    .btn-outline:hover { border-color: var(--sky); color: var(--sky); transform: translateY(-2px); }
+
+    /* HERO RIGHT — CARD STACK */
+    .hero-right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-left: 40px;
+      animation: fadeInRight 0.8s ease;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 26px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      transition: transform .3s, border-color .3s;
+    }
+    .stat-card:hover { transform: translateX(-6px); border-color: rgba(255,255,255,0.15); }
+    .stat-icon {
+      font-size: 28px;
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .stat-icon.coral { background: rgba(255,94,87,0.12); }
+    .stat-icon.sky { background: rgba(56,189,248,0.12); }
+    .stat-icon.lime { background: rgba(163,230,53,0.12); }
+    .stat-icon.amber { background: rgba(251,191,36,0.12); }
+    .stat-num {
+      font-family: var(--font-head);
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--bright);
+      line-height: 1;
+    }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 3px; }
+    .availability-bar {
+      background: var(--surface);
+      border: 1px solid rgba(163,230,53,0.3);
+      border-radius: 12px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--lime);
+      font-weight: 500;
+    }
+    .avail-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--lime);
+      animation: pulse 2s infinite;
+      flex-shrink: 0;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 100px 48px; position: relative; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 16px;
+    }
+    .section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--coral); }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(30px, 4vw, 46px);
+      font-weight: 800;
+      color: var(--bright);
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+    }
+    .section-title span { color: var(--coral); }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--bg); }
+    .projects-grid {
+      margin-top: 56px;
+      display: grid;
+      gap: 24px;
+    }
+    .project-featured {
+      grid-column: 1 / -1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 48px;
+      align-items: center;
+      transition: border-color .3s, transform .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-featured::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,94,87,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .project-featured:hover { border-color: rgba(255,94,87,0.4); transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,0.3); }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color .3s, transform .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card:hover { border-color: rgba(56,189,248,0.3); transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
+    .project-cards-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .proj-tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .proj-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .proj-tag.new { background: rgba(163,230,53,0.15); color: var(--lime); border: 1px solid rgba(163,230,53,0.3); }
+    .proj-tag.ux { background: rgba(255,94,87,0.12); color: var(--coral); border: 1px solid rgba(255,94,87,0.25); }
+    .proj-tag.mobile { background: rgba(56,189,248,0.12); color: var(--sky); border: 1px solid rgba(56,189,248,0.25); }
+    .proj-tag.full { background: rgba(251,191,36,0.12); color: var(--amber); border: 1px solid rgba(251,191,36,0.25); }
+    .proj-tag.research { background: rgba(167,139,250,0.12); color: #c4b5fd; border: 1px solid rgba(167,139,250,0.25); }
+    .proj-num {
+      font-family: var(--font-head);
+      font-size: 80px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.03);
+      line-height: 1;
+      position: absolute;
+      top: -10px; right: 20px;
+    }
+    .proj-title {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--bright);
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+    }
+    .project-featured .proj-title { font-size: 32px; letter-spacing: -1px; }
+    .proj-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .project-featured .proj-desc { font-size: 16px; }
+    .proj-outcome {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .outcome-item { display: flex; flex-direction: column; }
+    .outcome-num {
+      font-family: var(--font-head);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--coral);
+    }
+    .outcome-label { font-size: 12px; color: var(--muted); }
+    .proj-actions { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+    .btn-sm {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all .2s;
+      border: none;
+    }
+    .btn-sm-coral { background: var(--coral); color: #fff; }
+    .btn-sm-coral:hover { background: #e04840; transform: translateY(-1px); }
+    .btn-sm-sky { background: rgba(56,189,248,0.12); color: var(--sky); border: 1px solid rgba(56,189,248,0.25); }
+    .btn-sm-sky:hover { background: rgba(56,189,248,0.2); }
+    .btn-sm-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .btn-sm-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+    .proj-mockup {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .proj-mockup-sm {
+      height: 160px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Project visual illustrations via CSS */
+    .mock-skillaid { background: linear-gradient(135deg, #0f1724, #1a2744); }
+    .mock-velvet { background: linear-gradient(135deg, #1a0a14, #2d1020); }
+    .mock-care { background: linear-gradient(135deg, #0a1a2a, #0d2035); }
+    .mock-travel { background: linear-gradient(135deg, #0a1a18, #0d2a24); }
+
+    .mock-ui {
+      width: 100%; height: 100%;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      gap: 8px;
+    }
+    .mock-bar { height: 8px; border-radius: 4px; }
+    .mock-row { display: flex; gap: 8px; }
+    .mock-block { border-radius: 6px; flex: 1; }
+
+    /* ── SKILLAID FEATURED VIZ ── */
+    .skillaid-viz {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      padding: 20px;
+    }
+    .map-grid {
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      grid-template-rows: repeat(4,1fr);
+      gap: 3px;
+      height: 100%;
+    }
+    .map-cell {
+      border-radius: 4px;
+      background: rgba(56,189,248,0.06);
+    }
+    .map-cell.active { background: rgba(56,189,248,0.2); }
+    .map-cell.hot { background: rgba(255,94,87,0.25); animation: hotPulse 2s infinite; }
+    @keyframes hotPulse { 0%,100%{background:rgba(255,94,87,0.25)} 50%{background:rgba(255,94,87,0.45)} }
+    .vol-ping {
+      position: absolute;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--lime);
+      animation: ping 2s infinite;
+    }
+    @keyframes ping { 0%{transform:scale(1);opacity:1} 100%{transform:scale(2.5);opacity:0} }
+    .vol-dot {
+      position: absolute;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg2); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 64px;
+      align-items: start;
+      margin-top: 52px;
+    }
+    .about-text p { color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 18px; }
+    .about-text p strong { color: var(--text); font-weight: 500; }
+    .about-skills-title {
+      font-family: var(--font-head);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--bright);
+      margin: 28px 0 14px;
+    }
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-chip {
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      transition: all .2s;
+    }
+    .skill-chip:hover { border-color: var(--coral); color: var(--coral); }
+    .about-right { display: flex; flex-direction: column; gap: 20px; }
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .info-card-title {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--coral);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .edu-item { margin-bottom: 16px; }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-degree { font-weight: 600; color: var(--bright); font-size: 14px; }
+    .edu-school { color: var(--muted); font-size: 13px; margin-top: 2px; }
+    .edu-year { color: var(--sky); font-size: 12px; margin-top: 4px; font-weight: 500; }
+    .edu-badge {
+      display: inline-block;
+      margin-top: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 4px;
+      background: rgba(163,230,53,0.12);
+      color: var(--lime);
+      border: 1px solid rgba(163,230,53,0.25);
+    }
+    .lang-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .lang-pill {
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .lang-pill.fluent { border-color: rgba(56,189,248,0.3); color: var(--sky); }
+
+    /* ── TOOLS ── */
+    #tools { background: var(--bg); }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      margin-top: 52px;
+    }
+    .tool-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 16px;
+      text-align: center;
+      transition: all .3s;
+      cursor: default;
+    }
+    .tool-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.15); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+    .tool-card img { width: 40px; height: 40px; }
+    .tool-name { font-size: 12px; font-weight: 600; color: var(--muted); margin-top: 10px; }
+
+    /* ── FREELANCE ── */
+    #freelance { background: var(--bg2); }
+    .freelance-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 52px;
+    }
+    .freelance-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 32px;
+      transition: all .3s;
+    }
+    .freelance-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.12); }
+    .freelance-icon {
+      font-size: 32px;
+      margin-bottom: 18px;
+      display: block;
+    }
+    .freelance-title {
+      font-family: var(--font-head);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--bright);
+      margin-bottom: 10px;
+    }
+    .freelance-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .freelance-list {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .freelance-list li {
+      font-size: 13px;
+      color: var(--muted);
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .freelance-list li::before { content: '→'; color: var(--coral); font-weight: 700; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); }
+    .contact-inner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 52px;
+    }
+    .contact-inner::before {
+      content: '';
+      position: absolute;
+      top: -150px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse, rgba(255,94,87,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .contact-inner h2 {
+      font-family: var(--font-head);
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--bright);
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+    .contact-inner p { color: var(--muted); font-size: 17px; max-width: 50ch; margin: 0 auto 40px; }
+    .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .25s;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .contact-link:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-3px); background: var(--surface2); }
+    .contact-link.primary { background: var(--coral); color: #fff; border-color: var(--coral); }
+    .contact-link.primary:hover { background: #e04840; }
+    .contact-email {
+      font-family: var(--font-head);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--coral);
+      margin-top: 32px;
+      display: block;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 28px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer .logo { font-family: var(--font-head); font-weight: 800; color: var(--bright); font-size: 15px; }
+    footer .logo span { color: var(--coral); }
+    footer p { font-size: 13px; color: var(--muted); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      max-width: 720px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 40px;
+      position: relative;
+      animation: modalIn .3s ease;
+    }
+    @keyframes modalIn { from{transform:translateY(20px);opacity:0} to{transform:none;opacity:1} }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+    }
+    .modal-close:hover { color: var(--bright); border-color: rgba(255,255,255,0.2); }
+    .modal-tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .modal h2 {
+      font-family: var(--font-head);
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--bright);
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+    }
+    .modal-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .modal-meta-item { background: var(--bg2); border-radius: 10px; padding: 14px 16px; }
+    .modal-meta-label { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .modal-meta-value { font-size: 14px; color: var(--bright); font-weight: 600; margin-top: 4px; }
+    .modal-section { margin-top: 22px; }
+    .modal-section-title {
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--coral);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .modal-section p { font-size: 14px; color: var(--muted); line-height: 1.75; }
+    .modal-outcomes { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px; }
+    .modal-outcome {
+      background: rgba(163,230,53,0.06);
+      border: 1px solid rgba(163,230,53,0.2);
+      border-radius: 10px;
+      padding: 14px 18px;
+      text-align: center;
+    }
+    .modal-outcome .num { font-family: var(--font-head); font-size: 24px; font-weight: 800; color: var(--lime); }
+    .modal-outcome .lbl { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .modal-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:none} }
+    @keyframes fadeInDown { from{opacity:0;transform:translateY(-12px)} to{opacity:1;transform:none} }
+    @keyframes fadeInRight { from{opacity:0;transform:translateX(24px)} to{opacity:1;transform:none} }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
+      .hero-right { padding-left: 0; }
+      section { padding: 72px 24px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .project-featured { grid-template-columns: 1fr; }
+      .project-cards-row { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: repeat(3, 1fr); }
+      .freelance-grid { grid-template-columns: 1fr; }
+      .contact-inner { padding: 40px 24px; }
+      .contact-inner h2 { font-size: 30px; }
+      .modal-meta { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 10px; text-align: center; }
+    }
+    @media (max-width: 500px) {
+      .tools-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero h1 { letter-spacing: -1px; }
+    }
+
+    /* ── MOBILE NAV ── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--font-head);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .mobile-nav a:hover { color: var(--coral); }
+    .mobile-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      background: none; border: none; color: var(--muted); font-size: 28px; cursor: pointer;
+    }
+    
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" onclick="closeMobileNav()">✕</button>
+  <a href="#projects" onclick="closeMobileNav()">Projects</a>
+  <a href="#about" onclick="closeMobileNav()">About</a>
+  <a href="#tools" onclick="closeMobileNav()">Tools</a>
+  <a href="#freelance" onclick="closeMobileNav()">Services</a>
+  <a href="#contact" onclick="closeMobileNav()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">FS<span>.</span></div>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#tools">Tools</a>
+    <a href="#freelance">Services</a>
+    <a href="#contact" class="nav-cta">Let's Talk</a>
+  </div>
+  <button class="nav-toggle" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-left">
+    <div class="hero-badge">Available for Remote Internships & Freelance</div>
+    <h1>Fathima<br><span class="name-coral">Shafeeka.</span></h1>
+    <p class="hero-sub">
+      UI/UX Designer &amp; Software Engineer from Sri Lanka. I craft intuitive digital experiences —  
+      from research and wireframes to pixel-perfect Figma prototypes and full-stack products. 
+      Open to working with companies worldwide.
+    </p>
+    <div class="hero-chips">
+      <span class="chip chip-coral">UI/UX Design</span>
+      <span class="chip chip-sky">Figma</span>
+      <span class="chip chip-lime">Frontend Dev</span>
+      <span class="chip">User Research</span>
+      <span class="chip">Prototyping</span>
+      <span class="chip">PHP · MySQL</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View My Work ↓</a>
+      <a href="#contact" class="btn-outline">Hire Me</a>
+      <a href="CV_Fathima_UIX.pdf" class="btn-outline" download>🎨 UI/UX CV ↗</a>
+	  <a href="CV_Fathima_SE.pdf" class="btn-outline" download>💻 SE CV ↗</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="stat-card">
+      <div class="stat-icon coral">🎨</div>
+      <div>
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Design & Dev Projects</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon sky">📉</div>
+      <div>
+        <div class="stat-num">40%</div>
+        <div class="stat-label">Fewer Steps — CareConnect Booking</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon lime">🛠</div>
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Tools & Technologies</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon amber">📍</div>
+      <div>
+        <div class="stat-num">GMT+5:30</div>
+        <div class="stat-label">Flexible with any global timezone</div>
+      </div>
+    </div>
+    <div class="availability-bar">
+      <div class="avail-dot"></div>
+      Immediately available — Remote &amp; International roles welcome
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Work</div>
+  <div class="section-title">Selected <span>Projects</span></div>
+  <p style="margin-top:12px;color:var(--muted);font-size:16px;max-width:55ch">From emergency response systems to fashion e-commerce — real problems, real designs.</p>
+
+  <div class="projects-grid fade-in">
+
+    <!-- FEATURED: SKILLAID -->
+    <div class="project-featured" style="cursor:pointer" onclick="openModal('skillaid')">
+      <div>
+        <div class="proj-tag-row">
+          <span class="proj-tag new">BSc Final Project</span>
+          <span class="proj-tag ux">Full-Stack</span>
+          <span class="proj-tag research">UX Research</span>
+        </div>
+        <div class="proj-title" style="margin-top:16px">SkillAid — Smart Emergency<br>Volunteer Network</div>
+        <p class="proj-desc" style="margin-top:14px">
+          A web-based emergency volunteer coordination platform for Sri Lanka's disaster-prone communities. 
+          Volunteers register skills, location &amp; availability. Incident reporters submit emergencies with GPS. 
+          Admins deploy the right volunteers in real-time via a district-proximity algorithm.
+        </p>
+        <div class="proj-outcome">
+          <div class="outcome-item">
+            <span class="outcome-num">61</span>
+            <span class="outcome-label">Survey responses</span>
+          </div>
+          <div class="outcome-item">
+            <span class="outcome-num">10/10</span>
+            <span class="outcome-label">Test cases passed</span>
+          </div>
+          <div class="outcome-item">
+            <span class="outcome-num">6</span>
+            <span class="outcome-label">Functional modules</span>
+          </div>
+        </div>
+        <div class="proj-actions">
+          <button class="btn-sm btn-sm-coral" onclick="event.stopPropagation();openModal('skillaid')">View Case Study</button>
+          <span class="btn-sm btn-sm-ghost" style="cursor:default">PHP · MySQL · Leaflet.js · Bootstrap</span>
+        </div>
+      </div>
+      <div class="proj-mockup mock-skillaid">
+        <!-- Animated map viz -->
+        <div class="skillaid-viz">
+          <svg width="100%" height="100%" viewBox="0 0 360 240" style="position:absolute;inset:0">
+            <!-- district grid -->
+            <rect x="20" y="20" width="60" height="45" rx="6" fill="rgba(56,189,248,0.08)" stroke="rgba(56,189,248,0.15)" stroke-width="1"/>
+            <rect x="90" y="20" width="60" height="45" rx="6" fill="rgba(56,189,248,0.05)" stroke="rgba(56,189,248,0.1)" stroke-width="1"/>
+            <rect x="160" y="20" width="60" height="45" rx="6" fill="rgba(255,94,87,0.15)" stroke="rgba(255,94,87,0.35)" stroke-width="1.5"/>
+            <rect x="230" y="20" width="60" height="45" rx="6" fill="rgba(56,189,248,0.06)" stroke="rgba(56,189,248,0.12)" stroke-width="1"/>
+            <rect x="20" y="75" width="60" height="45" rx="6" fill="rgba(56,189,248,0.06)" stroke="rgba(56,189,248,0.12)" stroke-width="1"/>
+            <rect x="90" y="75" width="60" height="45" rx="6" fill="rgba(163,230,53,0.1)" stroke="rgba(163,230,53,0.25)" stroke-width="1"/>
+            <rect x="160" y="75" width="60" height="45" rx="6" fill="rgba(255,94,87,0.08)" stroke="rgba(255,94,87,0.2)" stroke-width="1"/>
+            <rect x="230" y="75" width="60" height="45" rx="6" fill="rgba(56,189,248,0.08)" stroke="rgba(56,189,248,0.15)" stroke-width="1"/>
+            <rect x="20" y="130" width="60" height="45" rx="6" fill="rgba(56,189,248,0.04)" stroke="rgba(56,189,248,0.08)" stroke-width="1"/>
+            <rect x="90" y="130" width="60" height="45" rx="6" fill="rgba(163,230,53,0.06)" stroke="rgba(163,230,53,0.15)" stroke-width="1"/>
+            <rect x="160" y="130" width="60" height="45" rx="6" fill="rgba(56,189,248,0.06)" stroke="rgba(56,189,248,0.12)" stroke-width="1"/>
+            <rect x="230" y="130" width="60" height="45" rx="6" fill="rgba(56,189,248,0.04)" stroke="rgba(56,189,248,0.08)" stroke-width="1"/>
+            <!-- incident pin -->
+            <circle cx="190" cy="42" r="8" fill="rgba(255,94,87,0.3)" stroke="#ff5e57" stroke-width="2">
+              <animate attributeName="r" values="8;14;8" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="190" cy="42" r="4" fill="#ff5e57"/>
+            <!-- volunteer dots with pulse -->
+            <circle cx="120" cy="97" r="5" fill="#a3e635"/>
+            <circle cx="120" cy="97" r="9" fill="none" stroke="#a3e635" stroke-width="1.2" opacity="0.5">
+              <animate attributeName="r" values="7;13;7" dur="2.5s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.5;0;0.5" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="50" cy="42" r="4" fill="#a3e635" opacity="0.7"/>
+            <circle cx="260" cy="97" r="4" fill="#38bdf8" opacity="0.8"/>
+            <circle cx="50" cy="152" r="4" fill="#a3e635" opacity="0.6"/>
+            <!-- connection lines -->
+            <line x1="120" y1="97" x2="190" y2="42" stroke="rgba(163,230,53,0.4)" stroke-width="1.5" stroke-dasharray="4 4">
+              <animate attributeName="stroke-dashoffset" values="0;-20" dur="1s" repeatCount="indefinite"/>
+            </line>
+            <!-- UI Panel -->
+            <rect x="295" y="20" width="55" height="155" rx="8" fill="rgba(13,17,23,0.9)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <text x="322" y="38" text-anchor="middle" fill="#ff5e57" font-size="8" font-weight="700">ALERT</text>
+            <rect x="302" y="45" width="41" height="4" rx="2" fill="rgba(255,94,87,0.3)"/>
+            <rect x="302" y="53" width="35" height="3" rx="2" fill="rgba(255,255,255,0.1)"/>
+            <text x="322" y="74" text-anchor="middle" fill="#a3e635" font-size="7">3 Volunteers</text>
+            <rect x="302" y="78" width="41" height="4" rx="2" fill="rgba(163,230,53,0.2)"/>
+            <rect x="302" y="86" width="30" height="3" rx="2" fill="rgba(163,230,53,0.15)"/>
+            <rect x="302" y="92" width="37" height="3" rx="2" fill="rgba(163,230,53,0.1)"/>
+            <text x="322" y="113" text-anchor="middle" fill="#38bdf8" font-size="7">GPS Active</text>
+            <rect x="302" y="116" width="41" height="10" rx="3" fill="rgba(56,189,248,0.15)" stroke="rgba(56,189,248,0.3)" stroke-width="0.8"/>
+            <text x="322" y="124" text-anchor="middle" fill="#38bdf8" font-size="6">Map View</text>
+            <rect x="302" y="132" width="41" height="10" rx="3" fill="rgba(163,230,53,0.12)" stroke="rgba(163,230,53,0.25)" stroke-width="0.8"/>
+            <text x="322" y="140" text-anchor="middle" fill="#a3e635" font-size="6">Assign</text>
+            <rect x="302" y="147" width="41" height="10" rx="3" fill="rgba(255,94,87,0.12)" stroke="rgba(255,94,87,0.2)" stroke-width="0.8"/>
+            <text x="322" y="155" text-anchor="middle" fill="#ff5e57" font-size="6">Report</text>
+            <!-- label -->
+            <text x="185" y="215" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="10">District Zone Proximity Algorithm</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 project cards row -->
+    <div class="project-cards-row">
+
+      <!-- Zendesk AI -->
+      <div class="project-card fade-in" onclick="openModal('zendesk')" style="cursor:pointer">
+        <div class="proj-num">01</div>
+        <div class="proj-tag-row">
+          <span class="proj-tag new">AI UX</span>
+          <span class="proj-tag ux">Case Study</span>
+        </div>
+        <div class="proj-mockup-sm" style="background:linear-gradient(135deg,#091522,#0f1d30);padding:0;overflow:hidden">
+          <img src="project_zendesk_beforeafter.png"
+            style="width:100%;height:100%;object-fit:cover"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+            alt="Zendesk Before/After">
+          <svg width="100%" height="100%" viewBox="0 0 280 140" style="display:none;position:absolute;inset:0">
+            <rect x="20" y="15" width="180" height="110" rx="8" fill="rgba(31,115,183,0.15)" stroke="rgba(31,115,183,0.3)" stroke-width="1"/>
+            <rect x="28" y="23" width="164" height="20" rx="4" fill="rgba(255,255,255,0.05)"/>
+            <rect x="32" y="28" width="60" height="10" rx="2" fill="rgba(255,255,255,0.12)"/>
+            <rect x="28" y="48" width="164" height="70" rx="4" fill="rgba(31,115,183,0.08)"/>
+            <rect x="32" y="54" width="100" height="7" rx="2" fill="rgba(255,255,255,0.08)"/>
+            <rect x="32" y="65" width="130" height="5" rx="2" fill="rgba(255,255,255,0.05)"/>
+            <rect x="32" y="74" width="110" height="5" rx="2" fill="rgba(255,255,255,0.05)"/>
+            <rect x="32" y="86" width="75" height="22" rx="4" fill="rgba(31,115,183,0.35)" stroke="rgba(31,115,183,0.6)" stroke-width="1"/>
+            <text x="70" y="101" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="7" font-weight="600">✓ Approve &amp; Send</text>
+            <rect x="215" y="15" width="50" height="110" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <rect x="220" y="23" width="40" height="12" rx="4" fill="rgba(163,230,53,0.2)" stroke="rgba(163,230,53,0.4)" stroke-width="1"/>
+            <text x="240" y="32" text-anchor="middle" fill="#a3e635" font-size="6" font-weight="700">HIGH</text>
+            <rect x="220" y="40" width="40" height="5" rx="2" fill="rgba(255,255,255,0.06)"/>
+            <rect x="220" y="49" width="35" height="5" rx="2" fill="rgba(255,255,255,0.05)"/>
+          </svg>
+        </div>
+        <div class="proj-title">Zendesk AI — Human Review Interface</div>
+        <p class="proj-desc">Redesigned Zendesk's AI reply review flow. Reduced approval from 6 clicks to 1. Added confidence scores, inline editing, and transparent AI reasoning.</p>
+        <div class="proj-actions">
+          <button class="btn-sm btn-sm-coral" onclick="event.stopPropagation();openModal('zendesk')">Case Study</button>
+          <a class="btn-sm btn-sm-sky" href="https://www.figma.com/proto/UMzyBUu4FiaLPXB9kO2rsr/Untitled?node-id=46-266" target="_blank" onclick="event.stopPropagation()">Figma ↗</a>
+        </div>
+      </div>
+
+      <!-- CareConnect -->
+      <div class="project-card fade-in" onclick="openModal('care')" style="cursor:pointer">
+        <div class="proj-num">02</div>
+        <div class="proj-tag-row">
+          <span class="proj-tag mobile">Mobile</span>
+          <span class="proj-tag ux">Healthcare UX</span>
+        </div>
+        <div class="proj-mockup-sm mock-care">
+          <svg width="100%" height="100%" viewBox="0 0 280 140">
+            <rect x="100" y="10" width="80" height="120" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(56,189,248,0.25)" stroke-width="1"/>
+            <rect x="105" y="22" width="70" height="12" rx="3" fill="rgba(56,189,248,0.12)"/>
+            <text x="140" y="31" text-anchor="middle" fill="#38bdf8" font-size="7" font-weight="600">CareConnect</text>
+            <circle cx="140" cy="52" r="12" fill="rgba(56,189,248,0.15)" stroke="rgba(56,189,248,0.3)" stroke-width="1"/>
+            <text x="140" y="56" text-anchor="middle" fill="#38bdf8" font-size="9">👨‍⚕️</text>
+            <rect x="108" y="68" width="64" height="7" rx="2" fill="rgba(255,255,255,0.08)"/>
+            <rect x="112" y="79" width="55" height="5" rx="2" fill="rgba(255,255,255,0.05)"/>
+            <rect x="108" y="90" width="64" height="14" rx="4" fill="rgba(56,189,248,0.2)" stroke="rgba(56,189,248,0.4)" stroke-width="1"/>
+            <text x="140" y="101" text-anchor="middle" fill="#38bdf8" font-size="6" font-weight="600">Book Appointment</text>
+            <rect x="108" y="108" width="64" height="14" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <text x="140" y="119" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="6">View Schedule</text>
+            <text x="50" y="75" fill="rgba(255,255,255,0.2)" font-size="8">3 steps</text>
+            <text x="50" y="88" fill="#a3e635" font-size="10" font-weight="700">↓40%</text>
+          </svg>
+        </div>
+        <div class="proj-title">CareConnect — Doctor Channeling System</div>
+        <p class="proj-desc">Patient-centered healthcare app. Reduced booking steps by 40% through UX research, personas, and iterative Figma prototyping.</p>
+        <div class="proj-actions">
+          <button class="btn-sm btn-sm-coral" onclick="event.stopPropagation();openModal('care')">Case Study</button>
+          <a class="btn-sm btn-sm-sky" href="https://www.figma.com/proto/rp2JSA5oCnybmviX5LYXaz/Untitled?node-id=0-1" target="_blank" onclick="event.stopPropagation()">Prototype ↗</a>
+        </div>
+      </div>
+
+      <!-- Velvet Vogue -->
+      <div class="project-card fade-in" onclick="openModal('velvet')" style="cursor:pointer">
+        <div class="proj-num">03</div>
+        <div class="proj-tag-row">
+          <span class="proj-tag full">E-commerce</span>
+          <span class="proj-tag ux">Full-Stack</span>
+        </div>
+        <div class="proj-mockup-sm mock-velvet">
+          <svg width="100%" height="100%" viewBox="0 0 280 140">
+            <rect x="20" y="10" width="240" height="120" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,94,87,0.15)" stroke-width="1"/>
+            <rect x="20" y="10" width="240" height="22" rx="8" fill="rgba(255,94,87,0.08)"/>
+            <text x="140" y="24" text-anchor="middle" fill="#ff5e57" font-size="8" font-weight="700">VELVET VOGUE</text>
+            <rect x="28" y="38" width="55" height="70" rx="5" fill="rgba(255,94,87,0.08)" stroke="rgba(255,94,87,0.2)" stroke-width="1"/>
+            <rect x="30" y="40" width="51" height="42" rx="4" fill="rgba(255,255,255,0.04)"/>
+            <text x="55" y="65" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="14">👗</text>
+            <rect x="30" y="87" width="40" height="5" rx="2" fill="rgba(255,255,255,0.07)"/>
+            <rect x="30" y="96" width="30" height="4" rx="2" fill="rgba(255,94,87,0.3)"/>
+            <rect x="92" y="38" width="55" height="70" rx="5" fill="rgba(255,94,87,0.06)" stroke="rgba(255,94,87,0.15)" stroke-width="1"/>
+            <rect x="94" y="40" width="51" height="42" rx="4" fill="rgba(255,255,255,0.03)"/>
+            <text x="119" y="65" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-size="14">👠</text>
+            <rect x="94" y="87" width="40" height="5" rx="2" fill="rgba(255,255,255,0.07)"/>
+            <rect x="94" y="96" width="30" height="4" rx="2" fill="rgba(255,94,87,0.3)"/>
+            <rect x="165" y="38" width="80" height="70" rx="5" fill="rgba(255,94,87,0.05)" stroke="rgba(255,94,87,0.1)" stroke-width="1"/>
+            <text x="205" y="62" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-size="9">Cart: 2 items</text>
+            <rect x="170" y="68" width="70" height="12" rx="3" fill="rgba(255,94,87,0.2)" stroke="rgba(255,94,87,0.35)" stroke-width="1"/>
+            <text x="205" y="78" text-anchor="middle" fill="#ff5e57" font-size="7" font-weight="600">Checkout →</text>
+          </svg>
+        </div>
+        <div class="proj-title">Velvet Vogue — Fashion E-Commerce</div>
+        <p class="proj-desc">End-to-end fashion platform. Figma-first design system, full PHP/MySQL backend, admin panel, cart, and responsive mobile-first UI.</p>
+        <div class="proj-actions">
+          <button class="btn-sm btn-sm-coral" onclick="event.stopPropagation();openModal('velvet')">Case Study</button>
+          <a class="btn-sm btn-sm-sky" href="https://www.figma.com/proto/O9fwYfoTuEV7z1OC0zKpea/Fathima-Shfeeqa?node-id=101-4" target="_blank" onclick="event.stopPropagation()">Prototype ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Travel Planner row -->
+    <div class="project-card fade-in" style="cursor:pointer" onclick="openModal('travel')">
+      <div class="proj-num">04</div>
+      <div class="proj-tag-row">
+        <span class="proj-tag mobile">Mobile</span>
+        <span class="proj-tag new">Travel</span>
+      </div>
+      <div class="proj-title">Traveller Planner — Mobile App</div>
+      <p class="proj-desc">Unified trip card concept reducing app-switching. UX research-driven onboarding cut from 6 to 2 screens after usability testing revealed drop-off points.</p>
+      <div class="proj-actions">
+        <button class="btn-sm btn-sm-coral" onclick="event.stopPropagation();openModal('travel')">Case Study</button>
+        <a class="btn-sm btn-sm-sky" href="https://www.figma.com/proto/O9fwYfoTuEV7z1OC0zKpea/Fathima-Shfeeqa?node-id=0-1" target="_blank" onclick="event.stopPropagation()">Prototype ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="section-title">Designing with <span>empathy,</span><br>building with precision.</div>
+
+  <div class="about-grid fade-in">
+    <div>
+    <div style="text-align:center;margin-bottom:20px">
+      <img src="profile.jpg" alt="Fathima Shafeeka"
+      style="width:180px;height:180px;border-radius:20px;
+      object-fit:cover;border:1px solid var(--border)"
+      onerror="this.style.display='none'">
+    </div>
+    <div class="about-text">
+      <p>
+        I'm <strong>Fathima Shafeeka</strong> — a final-year Software Engineering student at ESOFT Metro Campus in Sri Lanka, 
+        specializing in UI/UX design. I bridge the gap between beautiful interfaces and real engineering: 
+        I don't just design screens, I build them too.
+      </p>
+      <p>
+        My <strong>SkillAid</strong> project — a smart emergency volunteer network built for my BSc final — shows the depth of what I can do: 
+        stakeholder analysis, 61-response user surveys, UX wireframes, and a fully functional PHP/MySQL system with GPS 
+        map integration and a district-proximity volunteer matching algorithm. All 10 test cases passed.
+      </p>
+      <p>
+        I'm actively seeking <strong>remote internship or junior roles</strong> with companies in Europe, North America, Australia, 
+        and the Gulf — and I'm equally excited to work with forward-thinking Sri Lankan companies. 
+        I'm immediately available, timezone-flexible, and genuinely passionate about 
+        building products that feel effortless to use.
+      </p>
+
+      <div class="about-skills-title">Design Skills</div>
+      <div class="skills-grid">
+        <span class="skill-chip">User Research</span>
+        <span class="skill-chip">Wireframing</span>
+        <span class="skill-chip">High-Fidelity Prototyping</span>
+        <span class="skill-chip">Interaction Design</span>
+        <span class="skill-chip">Design Systems</span>
+        <span class="skill-chip">Empathy Mapping</span>
+        <span class="skill-chip">Persona Development</span>
+        <span class="skill-chip">A/B Testing</span>
+        <span class="skill-chip">Usability Testing</span>
+        <span class="skill-chip">Responsive Design</span>
+        <span class="skill-chip">Accessibility</span>
+      </div>
+
+      <div class="about-skills-title">Technical Skills</div>
+      <div class="skills-grid">
+        <span class="skill-chip">HTML5 · CSS3</span>
+        <span class="skill-chip">JavaScript</span>
+        <span class="skill-chip">React</span>
+        <span class="skill-chip">PHP</span>
+        <span class="skill-chip">MySQL</span>
+        <span class="skill-chip">Bootstrap</span>
+        <span class="skill-chip">REST APIs</span>
+        <span class="skill-chip">Git / GitHub</span>
+        <span class="skill-chip">Java</span>
+        <span class="skill-chip">C#</span>
+      </div>
+    </div>
+    </div>
+
+    <div class="about-right">
+      <div class="info-card">
+        <div class="info-card-title">Education</div>
+        <div class="edu-item">
+          <div class="edu-degree">BSc (Hons) Software Engineering</div>
+          <div class="edu-school">ESOFT Metro Campus</div>
+          <div class="edu-year">2024 – Expected 2026</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">HND — Software Engineering</div>
+          <div class="edu-school">ESOFT Metro Campus</div>
+          <div class="edu-year">2023 – 2025</div>
+          <span class="edu-badge">Graduated with Merit</span>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">Diploma in Information Technology</div>
+          <div class="edu-school">ESOFT Metro Campus</div>
+          <div class="edu-year">2022 – 2023</div>
+          <span class="edu-badge">Graduated with Distinction</span>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-title">Languages</div>
+        <div class="lang-row">
+          <span class="lang-pill fluent">English — Fluent</span>
+          <span class="lang-pill">Tamil</span>
+          <span class="lang-pill">Sinhala</span>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-title">Location &amp; Availability</div>
+        <div style="font-size:14px;color:var(--muted);line-height:1.7">
+          📍 Gampaha, Sri Lanka<br>
+          🌐 Open to: Remote worldwide · Sri Lanka<br>
+          ⏰ Flexible across all global timezones<br>
+          ✅ Available immediately
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-label">Stack</div>
+  <div class="section-title">Tools &amp; <span>Technologies</span></div>
+  <div class="tools-grid fade-in">
+    <div class="tool-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
+      <div class="tool-name">Figma</div>
+    </div>
+    <div class="tool-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code">
+      <div class="tool-name">VS Code</div>
+    </div>
+    <div class="tool-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+      <div class="tool-name">GitHub</div>
+    </div>
+    <div class="tool-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+      <div class="tool-name">HTML5</div>
+    </div>
+    <div class="tool-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+      <div class="tool-name">CSS3</div>
+    </div>
+    <div class="tool-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+      <div class="tool-name">JavaScript</div>
+    </div>
+    <div class="tool-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+      <div class="tool-name">React</div>
+    </div>
+    <div class="tool-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
+      <div class="tool-name">PHP</div>
+    </div>
+    <div class="tool-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+      <div class="tool-name">MySQL</div>
+    </div>
+    <div class="tool-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+      <div class="tool-name">Java</div>
+    </div>
+    <div class="tool-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap">
+      <div class="tool-name">Bootstrap</div>
+    </div>
+    <div class="tool-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" alt="Photoshop">
+      <div class="tool-name">Photoshop</div>
+    </div>
+  </div>
+</section>
+
+<!-- FREELANCE -->
+<section id="freelance">
+  <div class="section-label">Services</div>
+  <div class="section-title">What I Can <span>Do For You</span></div>
+  <p style="margin-top:12px;color:var(--muted);font-size:16px;max-width:55ch">Whether you're building a startup, redesigning an enterprise tool, or launching a new product.</p>
+  <div class="freelance-grid fade-in">
+    <div class="freelance-card">
+      <span class="freelance-icon">🤖</span>
+      <div class="freelance-title">AI UX Design</div>
+      <p class="freelance-desc">Designing human-in-the-loop interfaces for AI-powered SaaS products — where humans review, edit, and trust AI decisions.</p>
+      <ul class="freelance-list">
+        <li>Confidence score UI patterns</li>
+        <li>AI suggestion review flows</li>
+        <li>Transparent AI explainability</li>
+        <li>Human override mechanisms</li>
+      </ul>
+    </div>
+    <div class="freelance-card">
+      <span class="freelance-icon">🎨</span>
+      <div class="freelance-title">UI/UX Design</div>
+      <p class="freelance-desc">End-to-end design from user research and wireframes to polished, interactive Figma prototypes ready for handoff.</p>
+      <ul class="freelance-list">
+        <li>User research &amp; personas</li>
+        <li>Wireframes &amp; user flows</li>
+        <li>High-fidelity Figma prototypes</li>
+        <li>Design systems &amp; components</li>
+      </ul>
+    </div>
+    <div class="freelance-card">
+      <span class="freelance-icon">💻</span>
+      <div class="freelance-title">Frontend Development</div>
+      <p class="freelance-desc">Responsive, pixel-perfect websites and web apps — from landing pages to full-featured platforms with backend integration.</p>
+      <ul class="freelance-list">
+        <li>HTML · CSS · JavaScript · React</li>
+        <li>PHP &amp; MySQL backends</li>
+        <li>Mobile-first responsive design</li>
+        <li>Portfolio &amp; business websites</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <div class="section-title">Let's <span>Work Together</span></div>
+  <div class="contact-inner fade-in">
+    <h2>Open to Global Opportunities</h2>
+    <p>Remote internships, junior roles, or freelance projects — I'm excited to work with teams worldwide. Sri Lankan companies equally welcome!</p>
+    <div class="contact-links">
+      <a class="contact-link primary" href="mailto:fathimasfq@gmail.com">📧 Email Me</a>
+      <a class="contact-link" href="https://www.linkedin.com/in/fathima-shafeeka-a51148382/" target="_blank">💼 LinkedIn</a>
+      <a class="contact-link" href="https://github.com/FATHIMA-SHAFEEKA" target="_blank">🐙 GitHub</a>
+      <a class="contact-link" href="https://www.behance.net/mohammedraslan5" target="_blank">🖼 Behance</a>
+      <a class="contact-link" href="CV_Fathima_UIX.pdf" download>🎨 UI/UX CV</a>
+	  <a class="contact-link" href="CV_Fathima_SE.pdf" download>💻 SE CV</a>
+    </div>
+    <a href="mailto:fathimasfq@gmail.com" class="contact-email">fathimasfq@gmail.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">FS<span>.</span> Fathima Shafeeka</div>
+  <p>© 2025 · Gampaha, Sri Lanka · Open to the world 🌍</p>
+</footer>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOverlay(event)">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+const projects = {
+  skillaid: {
+    tags: ['BSc Final Project','Full-Stack','UX Research','PHP·MySQL','Leaflet.js'],
+    tagTypes: ['new','full','research','ux','mobile'],
+    title: 'SkillAid — Smart Emergency Volunteer Network',
+    role: 'Designer & Developer',
+    tools: 'PHP, MySQL, HTML/CSS/JS, Bootstrap, Leaflet.js',
+    duration: '3 months (2026)',
+    problem: `Emergency response in Sri Lanka depends on quickly reaching the right people. During floods, landslides, road accidents, and medical emergencies, there was no centralized digital system to identify and deploy community volunteers based on skills, location, and availability.`,
+    process: `Conducted stakeholder analysis, created use case models, wrote user stories, and ran a structured volunteer survey with 61 responses that directly shaped the system requirements. Designed 8 types of diagrams (use case, context, activity, sequence, flowchart, ER, architecture, data model) and wireframes for all major interfaces. Implemented across 6 functional modules.`,
+    result: `Fully functional web platform deployed with a district-zone proximity algorithm filtering volunteers by skill and location, GPS coordinates stored and displayed via interactive Leaflet.js map, and multi-volunteer slot management. All 10 test cases passed across functional, usability, and user acceptance testing.`,
+    outcomes: [
+      { num: '61', label: 'Survey Responses' },
+      { num: '10/10', label: 'Test Cases Passed' },
+      { num: '6', label: 'Functional Modules' },
+      { num: '4/4', label: 'Objectives Met' }
+    ],
+    figma: null,
+    doc: null
+  },
+  zendesk: {
+    tags: ['AI UX','Case Study','Figma','Interaction Design'],
+    tagTypes: ['new','ux','mobile','research'],
+    title: 'Zendesk AI — Human Review Interface Redesign',
+    role: 'UI/UX Designer',
+    tools: 'Figma, UX Research, Interaction Design',
+    duration: '5 days',
+    problem: `Zendesk support agents struggled to review AI-generated reply suggestions. No confidence score was shown, approving a good suggestion took 6 clicks, there was no inline editing, and agents didn't trust AI because they couldn't see why it suggested each reply.`,
+    process: `Signed up for Zendesk trial, identified 5 core UX problems, designed wireframes for 6 screens, built high-fidelity designs using Zendesk's real color system, created clickable prototype with approve flow and edit flow.`,
+    result: `Redesigned interface shows confidence score (High/Medium/Low badge), one-click Approve & Send button, inline editing on the suggestion card, persistent split-pane layout showing ticket and AI suggestion simultaneously, and a "Why this suggestion?" section showing matched keywords and source article. Reduced approval from 6 steps to 1 click.`,
+    outcomes: [
+      { num: '6→1', label: 'Clicks to Approve' },
+      { num: '35%', label: 'Faster Resolution (Est.)' },
+      { num: '5', label: 'UX Problems Solved' },
+      { num: '6', label: 'Screens Designed' }
+    ],
+    figma: 'https://www.figma.com/proto/UMzyBUu4FiaLPXB9kO2rsr/Untitled?node-id=46-266',
+    doc: null
+  },
+  care: {
+    tags: ['Mobile','Healthcare UX','React Native','Figma'],
+    tagTypes: ['mobile','ux','new','research'],
+    title: 'CareConnect — Doctor Channeling System',
+    role: 'UI/UX Designer',
+    tools: 'React Native, Figma, UX Research',
+    duration: '3 weeks',
+    problem: `Patients at local clinics booked appointments through phone calls and walk-ins, causing long queues and scheduling chaos for doctors. No digital system existed.`,
+    process: `Created 3 user personas (elderly patients, busy adults, clinic staff). Mapped separate user journeys for each. Designed unified system serving all 3. Key decision: reduced booking flow from 7 steps to 3 — select doctor, pick time, confirm.`,
+    result: `40% fewer steps to complete a booking. Doctors gained a real-time schedule view. Clinic staff got an admin dashboard for cancellations and reschedules. Full interactive Figma prototype with micro-interactions.`,
+    outcomes: [
+      { num: '40%', label: 'Fewer Booking Steps' },
+      { num: '7→3', label: 'Steps in Flow' },
+      { num: '3', label: 'User Personas' },
+      { num: '1', label: 'Unified System' }
+    ],
+    figma: 'https://www.figma.com/proto/rp2JSA5oCnybmviX5LYXaz/Untitled?node-id=0-1',
+    doc: 'careconnect_doc.pdf'
+  },
+  velvet: {
+    tags: ['E-commerce','Full-Stack','PHP·MySQL','Figma'],
+    tagTypes: ['full','ux','research','mobile'],
+    title: 'Velvet Vogue — Fashion E-Commerce Platform',
+    role: 'Software Developer & UI/UX Designer',
+    tools: 'PHP, MySQL, Bootstrap, Figma',
+    duration: '4 weeks',
+    problem: `A fashion brand was selling through Instagram DMs — chaotic, unscalable, no inventory tracking, no order management.`,
+    process: `Designed complete brand identity and UI in Figma first — color system, typography, component library. Then built full backend in PHP with MySQL: product catalog, shopping cart with session management, user authentication, and admin panel. Built mobile-first using Bootstrap.`,
+    result: `Fully functional e-commerce store deployed end to end. Admin panel handles product CRUD, order tracking, customer management. Responsive across all devices. Usability testing sessions informed the final design iteration.`,
+    outcomes: [
+      { num: 'Full', label: 'End-to-End Build' },
+      { num: '100%', label: 'Mobile Responsive' },
+      { num: '1', label: 'Figma-first System' },
+      { num: '3', label: 'User Role Types' }
+    ],
+    figma: 'https://www.figma.com/proto/O9fwYfoTuEV7z1OC0zKpea/Fathima-Shfeeqa?node-id=101-4',
+    doc: 'velvet_doc.pdf'
+  },
+  travel: {
+    tags: ['Mobile','Travel UX','Figma','Prototyping'],
+    tagTypes: ['mobile','new','ux','research'],
+    title: 'Traveller Planner — Mobile App',
+    role: 'UI/UX Designer',
+    tools: 'Figma, React Native, UX Research',
+    duration: '3 weeks',
+    problem: `First-time travelers felt overwhelmed juggling 4–5 different apps for flights, hotels, activities, maps, and budgets. The problem wasn't missing features — it was too much friction.`,
+    process: `Competitive analysis of TripIt, Google Trips, Airbnb. Key insight: users don't want to plan trips, they want to feel excited about them. Designed "Trip Card" — a single visual card per trip showing everything at a glance. Stripped onboarding from 6 screens to 2 after usability testing revealed high drop-off. Applied card sorting for navigation structure.`,
+    result: `Unified Trip Card reduced app-switching. Streamlined onboarding improved completion. Interactive Figma prototype with micro-interactions and smooth transitions. Clean, minimal visual language focused on travel excitement.`,
+    outcomes: [
+      { num: '6→2', label: 'Onboarding Screens' },
+      { num: '1', label: 'Unified Trip Card' },
+      { num: '3', label: 'Research Methods' },
+      { num: '↑', label: 'Onboarding Completion' }
+    ],
+    figma: 'https://www.figma.com/proto/O9fwYfoTuEV7z1OC0zKpea/Fathima-Shfeeqa?node-id=0-1',
+    doc: 'travel_doc.pdf'
+  }
+};
+
+function openModal(id) {
+  const p = projects[id];
+  if (!p) return;
+  const tagColors = { new:'proj-tag new', ux:'proj-tag ux', mobile:'proj-tag mobile', full:'proj-tag full', research:'proj-tag research' };
+  const tagsHtml = p.tags.map((t,i) => `<span class="${tagColors[p.tagTypes[i]] || 'proj-tag ux'}">${t}</span>`).join('');
+  const outcomesHtml = p.outcomes.map(o => `<div class="modal-outcome"><div class="num">${o.num}</div><div class="lbl">${o.label}</div></div>`).join('');
+  const actionsHtml = [
+    p.figma ? `<a class="btn-sm btn-sm-coral" href="${p.figma}" target="_blank">View Prototype ↗</a>` : '',
+    p.doc ? `<a class="btn-sm btn-sm-sky" href="${p.doc}" target="_blank">Download Doc ↗</a>` : '',
+    `<button class="btn-sm btn-sm-ghost" onclick="closeModal()">Close</button>`
+  ].join('');
+
+  document.getElementById('modalContent').innerHTML = `
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-tag-row">${tagsHtml}</div>
+    <h2>${p.title}</h2>
+    <div class="modal-meta">
+      <div class="modal-meta-item"><div class="modal-meta-label">Role</div><div class="modal-meta-value">${p.role}</div></div>
+      <div class="modal-meta-item"><div class="modal-meta-label">Tools</div><div class="modal-meta-value">${p.tools}</div></div>
+      <div class="modal-meta-item"><div class="modal-meta-label">Duration</div><div class="modal-meta-value">${p.duration}</div></div>
+    </div>
+    <div class="modal-section"><div class="modal-section-title">Problem</div><p>${p.problem}</p></div>
+    <div class="modal-section"><div class="modal-section-title">Process</div><p>${p.process}</p></div>
+    <div class="modal-section"><div class="modal-section-title">Result</div><p>${p.result}</p></div>
+    <div class="modal-section"><div class="modal-section-title">Key Outcomes</div><div class="modal-outcomes">${outcomesHtml}</div></div>
+    <div class="modal-actions">${actionsHtml}</div>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOverlay(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+function closeMobileNav() {
+  document.getElementById('mobileNav').classList.remove('open');
+}
+
+// Intersection observer for fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Keyboard close
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
